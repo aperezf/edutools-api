@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edutools-api", "edutools-api\edutools-api.csproj", "{D31AD284-40E7-401C-B02F-ED5CAE5FE867}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edutools-api.store", "edutools-api.store\edutools-api.store.csproj", "{D28F06F0-931D-4AD0-AB57-E9B1E1A85735}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D31AD284-40E7-401C-B02F-ED5CAE5FE867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31AD284-40E7-401C-B02F-ED5CAE5FE867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31AD284-40E7-401C-B02F-ED5CAE5FE867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31AD284-40E7-401C-B02F-ED5CAE5FE867}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D28F06F0-931D-4AD0-AB57-E9B1E1A85735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28F06F0-931D-4AD0-AB57-E9B1E1A85735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28F06F0-931D-4AD0-AB57-E9B1E1A85735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28F06F0-931D-4AD0-AB57-E9B1E1A85735}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A70ECE84-6099-400E-AB12-BD5FE9F7DD30}
+	EndGlobalSection
+EndGlobal
