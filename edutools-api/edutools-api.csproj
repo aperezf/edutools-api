@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\edutools-api.services\edutools-api.services.csproj" />
     <ProjectReference Include="..\edutools-api.store\edutools-api.store.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-using edutools_api.services.Services;
+using edutools_api.services.Services.Jwt;
 using edutools_api.store.Edutools;
 using EntityFramework.Exceptions.MySQL.Pomelo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

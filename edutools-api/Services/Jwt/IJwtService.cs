@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace edutools_api.services.Services
+namespace edutools_api.Services.Jwt
 {
     public interface IJwtService
     {
