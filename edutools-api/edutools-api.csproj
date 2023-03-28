@@ -21,4 +21,8 @@
     <ProjectReference Include="..\edutools-api.store\edutools-api.store.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\Auth\" />
+  </ItemGroup>
+
 </Project>

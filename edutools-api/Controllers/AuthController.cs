@@ -2,6 +2,7 @@
 
 using edutools_api.Models;
 using edutools_api.Models.Auth;
+using edutools_api.Services.Auth;
 using edutools_api.Services.Jwt;
 using edutools_api.store.Edutools;
 using EntityFramework.Exceptions.Common;
@@ -15,14 +16,14 @@ namespace edutools_api.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        public IJwtService _JwtService { get; set; }
-        public EdutoolsContext _EdutoolsContext { get; set; }
+        public readonly IJwtService _JwtService;
+        public readonly IAuthService _AuthService;
         public AuthController(
-            EdutoolsContext edutoolsContext,
-            IJwtService jwtService)
+            IJwtService jwtService,
+            IAuthService authService)
         {
-            _EdutoolsContext = edutoolsContext;
             _JwtService = jwtService;
+            _AuthService = authService;
         }
 
         [HttpPost]
@@ -32,22 +33,14 @@ namespace edutools_api.Controllers
         {
             try
             {
-                // Crear usuario
-                await _EdutoolsContext.AddAsync(new User
+                if (await _AuthService.SignIn(signIn))
                 {
-                    Name = signIn.Name,
-                    Email = signIn.Email,
-                    Password = signIn.Password
+                    return Ok();
+                }
+                return BadRequest(new
+                {
+                    Message = "Ha ocurrido un error al inscribir al usuario."
                 });
-                await _EdutoolsContext.SaveChangesAsync();
-
-                // Dale token
-                //return Ok(new
-                //{
-                //    At = _JwtService.CreateJwtToken(user.Email),
-                //});
-                // Enviar correo con link de confirmacion 
-                return Ok();
             }
             catch (UniqueConstraintException)
             {
