@@ -21,7 +21,8 @@ namespace edutools_api.services.Services
         public string CreateJwtToken(string email)
         {
             var handler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_Configuration["Jwt:Key"] = null!);
+            var jwtKey = _Configuration["Jwt:Key"] ?? "";
+            var key = Encoding.ASCII.GetBytes(jwtKey);
             var descriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
