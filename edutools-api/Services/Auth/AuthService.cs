@@ -1,4 +1,5 @@
 ﻿using edutools_api.Models.Auth;
+using edutools_api.Services.AWS;
 using edutools_api.Services.Jwt;
 using edutools_api.store.Edutools;
 using Microsoft.EntityFrameworkCore;
@@ -12,14 +13,18 @@ namespace edutools_api.Services.Auth
 {
     public class AuthService : IAuthService
     {
-        public readonly EdutoolsContext _DbContext;
-        public readonly IJwtService _JwtService;
+        private readonly EdutoolsContext _DbContext;
+        private readonly IJwtService _JwtService;
+        private readonly ISNSService _SNSService;
+        
         public AuthService(
             EdutoolsContext dbContext,
-            IJwtService jwtService)
+            IJwtService jwtService,
+            ISNSService snsService)
         {
             _DbContext = dbContext;
             _JwtService = jwtService;
+            _SNSService = snsService;
         }
 
         
@@ -44,16 +49,18 @@ namespace edutools_api.Services.Auth
             // Validacion Input
             if (signIn == null) return false;
             // Insertar registro
-            await _DbContext.AddAsync(new User
+            var user = new User
             {
                 Name = signIn.Name,
                 Email = signIn.Email,
                 Password = signIn.Password
-            });
+            };
+            await _DbContext.AddAsync(user);
             await _DbContext.SaveChangesAsync();
+
             // Enviar email para activar cuenta
             // Retornar bool
-            return true;
+            return await _SNSService.EmitSNSEvent("SignInUser", user);
         }
     }
 }

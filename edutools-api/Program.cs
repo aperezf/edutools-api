@@ -1,4 +1,6 @@
-using edutools_api.services.Services.Jwt;
+using edutools_api.Services.Auth;
+using edutools_api.Services.AWS;
+using edutools_api.Services.Jwt;
 using edutools_api.store.Edutools;
 using EntityFramework.Exceptions.MySQL.Pomelo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -38,6 +40,9 @@ builder.Services.AddAuthentication(x =>
 
 
 builder.Services.AddSingleton<IJwtService, JwtService>();
+builder.Services.AddSingleton<ISNSService, SNSService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

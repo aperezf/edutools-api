@@ -57,12 +57,7 @@ namespace edutools_api.Controllers
         public async Task<object> Login(LoginRequestDTO login)
         {
             if (login == null) return BadRequest();
-            var user = await _EdutoolsContext.Users.FirstOrDefaultAsync(x => x.Email == login.Email);
-            if (user == null || user.Password != login.Password) return Unauthorized("Usuario incorrecto");
-            return Ok(new
-            {
-                At = _JwtService.CreateJwtToken(user.Email)
-            });
+            return Ok(_AuthService.Login(login));
         }
 
 
