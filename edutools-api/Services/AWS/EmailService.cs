@@ -21,8 +21,8 @@ namespace edutools_api.Services.AWS
         {
             string host = "email-smtp.us-east-1.amazonaws.com";
             int port = 587;
-            string smtpUser = "AKIA5KA6YYFCJELKCLUU";
-            string smtpPassword = "BEiwRf8aXXOhaZ+3MvATvs7zzVXvOCl9aBokt9YYpVfi";
+            string smtpUser = "";
+            string smtpPassword = "";
             SmtpClient client = new SmtpClient(host, port);
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential(smtpUser, smtpPassword);
