@@ -15,16 +15,16 @@ namespace edutools_api.Services.Auth
     {
         private readonly EdutoolsContext _DbContext;
         private readonly IJwtService _JwtService;
-        private readonly ISNSService _SNSService;
+        private readonly IEmailService _EmailService;
         
         public AuthService(
             EdutoolsContext dbContext,
             IJwtService jwtService,
-            ISNSService snsService)
+            IEmailService emailService)
         {
             _DbContext = dbContext;
             _JwtService = jwtService;
-            _SNSService = snsService;
+            _EmailService = emailService;
         }
 
         
@@ -60,7 +60,7 @@ namespace edutools_api.Services.Auth
 
             // Enviar email para activar cuenta
             // Retornar bool
-            return await _SNSService.EmitSNSEvent("SignInUser", user);
+            return await _EmailService.SendEmail("aperezf91@gmail.com", "Email de prueba");
         }
     }
 }

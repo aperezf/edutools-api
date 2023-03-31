@@ -40,7 +40,8 @@ builder.Services.AddAuthentication(x =>
 
 
 builder.Services.AddSingleton<IJwtService, JwtService>();
-builder.Services.AddSingleton<ISNSService, SNSService>();
+//builder.Services.AddSingleton<ISNSService, SNSService>();
+builder.Services.AddSingleton<IEmailService, EmailService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
